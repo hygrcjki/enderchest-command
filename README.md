@@ -12,4 +12,4 @@ Run `./gradlew build`. The distributable JAR is created in `build/libs`.
 
 ## How to Download
 
-Navigate to the build/libs file and look for the .jar file.
+Navigate to the `build/libs` file and look for the .jar file.
