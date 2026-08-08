@@ -1,9 +1,11 @@
-# Example Mod
+# Ender Chest Command
 
-## Setup
+A Fabric mod for Minecraft 26.1.2 that opens a player's ender chest with `/enderchest`.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+## Install
 
-## License
+Install Fabric Loader 0.19.3 or newer and Fabric API, then put the built mod JAR in your `mods` folder.
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## Build
+
+Run `./gradlew build`. The distributable JAR is created in `build/libs`.
