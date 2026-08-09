@@ -2,8 +2,8 @@
 	"schemaVersion": 1,
 	"id": "enderchestcommand",
 	"version": "${version}",
-	"name": "Ender Chest Command",
-	"description": "Open your ender chest with /enderchest.",
+	"name": "Ender Chest Utility",
+	"description": "Utilities for managing and opening Ender Chests.",
 	"authors": [
 		"Ender Chest Command"
 	],
