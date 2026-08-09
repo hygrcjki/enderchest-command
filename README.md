@@ -10,6 +10,7 @@ Install Fabric Loader 0.19.3 or newer and Fabric API, then put the built mod JAR
 
 Run `./gradlew build`. The distributable JAR is created in `build/libs`.
 
-## How to Download
+## Downloads
 
-Navigate to the `build/libs` file and look for the .jar file.
+**Github:** Navigate to the `build/libs` file and look for the .jar file.
+**Modrinth:** https://modrinth.com/mod/enderchest-command
