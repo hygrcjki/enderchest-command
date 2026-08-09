@@ -17,19 +17,35 @@ public class EnderChestCommandMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		CommandAccessConfig.load();
+
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(
 			Commands.literal("enderchest")
 				.executes(context -> openEnderChest(context.getSource().getPlayerOrException()))
+				.then(Commands.literal("settings")
+					.requires(source -> Commands.LEVEL_GAMEMASTERS.check(source.permissions()))
+					.executes(context -> openSettings(context.getSource().getPlayerOrException()))
+				)
 		));
 
-		LOGGER.info("Registered /enderchest command");
+		LOGGER.info("Registered /enderchest and /enderchest settings commands");
 	}
 
 	private static int openEnderChest(ServerPlayer player) {
+		if (!CommandAccessConfig.canUse(player)) {
+			player.sendSystemMessage(Component.literal("You are not allowed to use /enderchest."));
+			return 0;
+		}
+
 		player.openMenu(new SimpleMenuProvider(
 			(syncId, inventory, ignored) -> ChestMenu.threeRows(syncId, inventory, player.getEnderChestInventory()),
 			Component.translatable("container.enderchest")
 		));
+		return 1;
+	}
+
+	private static int openSettings(ServerPlayer player) {
+		SettingsMenu.open(player);
 		return 1;
 	}
 }
