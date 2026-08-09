@@ -1,6 +1,13 @@
 # Ender Chest Utility
 
-A Fabric mod for Minecraft 26.1.2 that opens a player's ender chest with `/enderchest`.
+A Fabric mod for Minecraft 26.1.2 that opens a player's Ender Chest with `/enderchest`.
+
+## Commands
+
+- `/enderchest` opens your personal Ender Chest.
+- `/enderchest settings` opens an operator-only settings menu.
+
+The settings menu can enable or disable the command whitelist and add or remove online players. Settings persist in `config/enderchest-utility.json` on the server.
 
 ## Install
 

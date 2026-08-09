@@ -3,9 +3,9 @@
 	"id": "enderchestcommand",
 	"version": "${version}",
 	"name": "Ender Chest Utility",
-	"description": "Utilities for managing and opening Ender Chests.",
+	"description": "Open Ender Chests and manage command access with an operator settings menu.",
 	"authors": [
-		"Ender Chest Command"
+		"EnderChest Utility"
 	],
 	"contact": {
 		"homepage": ""
