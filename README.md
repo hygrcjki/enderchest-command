@@ -1,4 +1,4 @@
-# Ender Chest Command
+# Ender Chest Utility
 
 A Fabric mod for Minecraft 26.1.2 that opens a player's ender chest with `/enderchest`.
 
