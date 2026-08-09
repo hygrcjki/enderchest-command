@@ -13,4 +13,5 @@ Run `./gradlew build`. The distributable JAR is created in `build/libs`.
 ## Downloads
 
 **Github:** Navigate to the `build/libs` file and look for the .jar file.
+
 **Modrinth:** https://modrinth.com/mod/enderchest-command
