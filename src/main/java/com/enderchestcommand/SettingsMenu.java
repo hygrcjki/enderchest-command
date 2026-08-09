@@ -34,6 +34,7 @@ public final class SettingsMenu extends ChestMenu {
 	private static void open(ServerPlayer operator, Mode mode) {
 		String title = switch (mode) {
 			case HOME -> "EnderChest Utility Settings";
+			case WHITELIST_PLAYERS -> "Whitelisted Players";
 			case ADD_CHOICE -> "Add Player to Whitelist";
 			case REMOVE_CHOICE -> "Remove Player from Whitelist";
 			case ADD_ONLINE, REMOVE_ONLINE -> "Online Players";
@@ -52,11 +53,12 @@ public final class SettingsMenu extends ChestMenu {
 			getContainer().setItem(10, named(CommandAccessConfig.isWhitelistEnabled() ? Items.LIME_DYE : Items.GRAY_DYE, "Whitelist: " + (CommandAccessConfig.isWhitelistEnabled() ? "Enabled" : "Disabled")));
 			getContainer().setItem(12, named(Items.EMERALD, "Add player to whitelist"));
 			getContainer().setItem(14, named(Items.REDSTONE, "Remove player from whitelist"));
+			getContainer().setItem(16, named(Items.NAME_TAG, "View whitelisted players (" + CommandAccessConfig.whitelistSize() + ")"));
+			return;
+		}
+		if (mode == Mode.WHITELIST_PLAYERS) {
 			List<CommandAccessConfig.PlayerEntry> players = CommandAccessConfig.whitelistedPlayers();
-			for (int slot = 18; slot < SIZE && slot - 18 < players.size(); slot++) {
-				CommandAccessConfig.PlayerEntry entry = players.get(slot - 18);
-				getContainer().setItem(slot, named(Items.PLAYER_HEAD, entry.name()));
-			}
+			for (int slot = 0; slot < SIZE && slot < players.size(); slot++) getContainer().setItem(slot, named(Items.PLAYER_HEAD, players.get(slot).name()));
 			return;
 		}
 		if (mode == Mode.ADD_CHOICE || mode == Mode.REMOVE_CHOICE) {
@@ -83,9 +85,10 @@ public final class SettingsMenu extends ChestMenu {
 			if (slot == 10) { CommandAccessConfig.toggleWhitelist(); populate(); broadcastChanges(); }
 			else if (slot == 12) open(operator, Mode.ADD_CHOICE);
 			else if (slot == 14) open(operator, Mode.REMOVE_CHOICE);
-			else if (slot >= 18) viewWhitelisted(slot - 18);
+			else if (slot == 16) open(operator, Mode.WHITELIST_PLAYERS);
 			return;
 		}
+		if (mode == Mode.WHITELIST_PLAYERS) { viewWhitelisted(slot); return; }
 		if (mode == Mode.ADD_CHOICE) { if (slot == 11) open(operator, Mode.ADD_ONLINE); else if (slot == 15) open(operator, Mode.ADD_OFFLINE); return; }
 		if (mode == Mode.REMOVE_CHOICE) { if (slot == 11) open(operator, Mode.REMOVE_ONLINE); else if (slot == 15) open(operator, Mode.REMOVE_OFFLINE); return; }
 		List<CommandAccessConfig.PlayerEntry> players = selectablePlayers();
@@ -113,5 +116,5 @@ public final class SettingsMenu extends ChestMenu {
 	}
 	private List<ServerPlayer> onlinePlayers() { return operator.level().getServer().getPlayerList().getPlayers(); }
 	private static ItemStack named(Item item, String name) { ItemStack stack = new ItemStack(item); stack.set(DataComponents.CUSTOM_NAME, Component.literal(name)); return stack; }
-	private enum Mode { HOME, ADD_CHOICE, REMOVE_CHOICE, ADD_ONLINE, ADD_OFFLINE, REMOVE_ONLINE, REMOVE_OFFLINE }
+	private enum Mode { HOME, WHITELIST_PLAYERS, ADD_CHOICE, REMOVE_CHOICE, ADD_ONLINE, ADD_OFFLINE, REMOVE_ONLINE, REMOVE_OFFLINE }
 }
