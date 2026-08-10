@@ -8,6 +8,7 @@ import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
 
+@SuppressWarnings("null")
 public final class EnderChestViewMenu extends ChestMenu {
 	public EnderChestViewMenu(int id, Inventory inventory, Container enderChest) {
 		super(MenuType.GENERIC_9x3, id, inventory, enderChest, 3);

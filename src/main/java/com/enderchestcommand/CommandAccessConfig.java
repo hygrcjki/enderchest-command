@@ -14,9 +14,9 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
+@SuppressWarnings("null")
 public final class CommandAccessConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("enderchest-utility.json");

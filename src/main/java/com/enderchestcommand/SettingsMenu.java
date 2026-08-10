@@ -15,6 +15,7 @@ import net.minecraft.world.item.Items;
 
 import java.util.List;
 
+@SuppressWarnings("null")
 public final class SettingsMenu extends ChestMenu {
 	private static final int SIZE = 27;
 	private final ServerPlayer operator;
